@@ -68,7 +68,7 @@ class prac3a(gr.top_block, Qt.QWidget):
         ##################################################
         # Variables
         ##################################################
-        self.h = h = np.array([1,1,1,1])
+        self.h = h = np.array([1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1])
         self.Sps = Sps = len(h)
         self.Rb = Rb = 32000
         self.samp_rate = samp_rate = Rb*Sps
@@ -236,7 +236,7 @@ class prac3a(gr.top_block, Qt.QWidget):
         self.interp_fir_filter_xxx_0.declare_sample_delay(0)
         self.fft_vxx_0 = fft.fft_vfc(N, True, [1]*N, True, 1)
         self.epy_block_0 = epy_block_0.blk(N=N)
-        self.blocks_unpack_k_bits_bb_0 = blocks.unpack_k_bits_bb(1)
+        self.blocks_unpack_k_bits_bb_0 = blocks.unpack_k_bits_bb(20)
         self.blocks_throttle_0 = blocks.throttle(gr.sizeof_float*1, samp_rate,True)
         self.blocks_stream_to_vector_0 = blocks.stream_to_vector(gr.sizeof_float*1, N)
         self.blocks_null_sink_0 = blocks.null_sink(gr.sizeof_float*1)

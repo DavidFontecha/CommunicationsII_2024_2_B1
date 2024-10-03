@@ -73,7 +73,7 @@ blocks:
   id: variable
   parameters:
     comment: ''
-    value: np.array([1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1])
+    value: np.array([1,1, 1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1])
   states:
     bus_sink: false
     bus_source: false
@@ -133,7 +133,7 @@ blocks:
     affinity: ''
     alias: ''
     comment: ''
-    const: -1./2.
+    const: -3./2.
     maxoutbuf: '0'
     minoutbuf: '0'
     type: float
@@ -241,7 +241,7 @@ blocks:
     alias: ''
     begin_tag: pmt.PMT_NIL
     comment: ''
-    file: /home/comu2_grupob1/Grupo_G04/CommunicationsII_2024_2_B1/Practica_2/GNURadio/rana.jpg
+    file: /home/comu2_grupob1/Grupo_G04/CommunicationsII_2024_2_B1/Practica_2/GNURadio/sonido.wav
     length: '0'
     maxoutbuf: '0'
     minoutbuf: '0'
@@ -352,7 +352,7 @@ blocks:
     affinity: ''
     alias: ''
     comment: ''
-    k: '20'
+    k: '8'
     maxoutbuf: '0'
     minoutbuf: '0'
   states:

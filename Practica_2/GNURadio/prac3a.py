@@ -68,7 +68,7 @@ class prac3a(gr.top_block, Qt.QWidget):
         ##################################################
         # Variables
         ##################################################
-        self.h = h = np.array([1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1])
+        self.h = h = np.array([1,1, 1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1])
         self.Sps = Sps = len(h)
         self.Rb = Rb = 32000
         self.samp_rate = samp_rate = Rb*Sps
@@ -236,19 +236,19 @@ class prac3a(gr.top_block, Qt.QWidget):
         self.interp_fir_filter_xxx_0.declare_sample_delay(0)
         self.fft_vxx_0 = fft.fft_vfc(N, True, [1]*N, True, 1)
         self.epy_block_0 = epy_block_0.blk(N=N)
-        self.blocks_unpack_k_bits_bb_0 = blocks.unpack_k_bits_bb(20)
+        self.blocks_unpack_k_bits_bb_0 = blocks.unpack_k_bits_bb(8)
         self.blocks_throttle_0 = blocks.throttle(gr.sizeof_float*1, samp_rate,True)
         self.blocks_stream_to_vector_0 = blocks.stream_to_vector(gr.sizeof_float*1, N)
         self.blocks_null_sink_0 = blocks.null_sink(gr.sizeof_float*1)
         self.blocks_multiply_const_vxx_1 = blocks.multiply_const_vff([1/(N*samp_rate)]*N)
         self.blocks_multiply_const_vxx_0 = blocks.multiply_const_ff(2.)
-        self.blocks_file_source_0 = blocks.file_source(gr.sizeof_char*1, '/home/comu2_grupob1/Grupo_G04/CommunicationsII_2024_2_B1/Practica_2/GNURadio/rana.jpg', True, 0, 0)
+        self.blocks_file_source_0 = blocks.file_source(gr.sizeof_char*1, '/home/comu2_grupob1/Grupo_G04/CommunicationsII_2024_2_B1/Practica_2/GNURadio/sonido.wav', True, 0, 0)
         self.blocks_file_source_0.set_begin_tag(pmt.PMT_NIL)
         self.blocks_complex_to_mag_squared_0 = blocks.complex_to_mag_squared(N)
         self.blocks_char_to_float_0 = blocks.char_to_float(1, 1)
         self.blocks_add_xx_0 = blocks.add_vff(1)
         self.analog_noise_source_x_0 = analog.noise_source_f(analog.GR_GAUSSIAN, 1, 76)
-        self.analog_const_source_x_0_0 = analog.sig_source_f(0, analog.GR_CONST_WAVE, 0, 0, (-1./2.))
+        self.analog_const_source_x_0_0 = analog.sig_source_f(0, analog.GR_CONST_WAVE, 0, 0, (-3./2.))
 
 
         ##################################################

@@ -133,7 +133,7 @@ blocks:
     affinity: ''
     alias: ''
     comment: ''
-    const: -3./2.
+    const: -1./2.
     maxoutbuf: '0'
     minoutbuf: '0'
     type: float

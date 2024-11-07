@@ -73,7 +73,7 @@ blocks:
   id: variable
   parameters:
     comment: ''
-    value: np.array([1,1, 1, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1])
+    value: np.array([1,1, 1, 1])
   states:
     bus_sink: false
     bus_source: false
@@ -133,7 +133,7 @@ blocks:
     affinity: ''
     alias: ''
     comment: ''
-    const: -1./2.
+    const: '0'
     maxoutbuf: '0'
     minoutbuf: '0'
     type: float
@@ -262,7 +262,7 @@ blocks:
     affinity: ''
     alias: ''
     comment: ''
-    const: '2.'
+    const: '1'
     maxoutbuf: '0'
     minoutbuf: '0'
     type: float

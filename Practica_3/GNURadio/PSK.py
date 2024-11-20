@@ -5,7 +5,7 @@
 # SPDX-License-Identifier: GPL-3.0
 #
 # GNU Radio Python Flow Graph
-# Title: ook
+# Title: PSK
 # Author: radiogis_director
 # GNU Radio version: v3.11.0.0git-810-g1ecb8565
 
@@ -25,21 +25,21 @@ from PyQt5 import Qt
 from argparse import ArgumentParser
 from gnuradio.eng_arg import eng_float, intx
 from gnuradio import eng_notation
+import PSK_epy_block_0 as epy_block_0  # embedded python block
+import PSK_epy_block_0_0 as epy_block_0_0  # embedded python block
 import math
 import numpy as np
-import ook_epy_block_0 as epy_block_0  # embedded python block
-import ook_epy_block_0_0 as epy_block_0_0  # embedded python block
 import sip
 import threading
 
 
 
-class ook(gr.top_block, Qt.QWidget):
+class PSK(gr.top_block, Qt.QWidget):
 
     def __init__(self):
-        gr.top_block.__init__(self, "ook", catch_exceptions=True)
+        gr.top_block.__init__(self, "PSK", catch_exceptions=True)
         Qt.QWidget.__init__(self)
-        self.setWindowTitle("ook")
+        self.setWindowTitle("PSK")
         qtgui.util.check_set_qss()
         try:
             self.setWindowIcon(Qt.QIcon.fromTheme('gnuradio-grc'))
@@ -57,7 +57,7 @@ class ook(gr.top_block, Qt.QWidget):
         self.top_grid_layout = Qt.QGridLayout()
         self.top_layout.addLayout(self.top_grid_layout)
 
-        self.settings = Qt.QSettings("gnuradio/flowgraphs", "ook")
+        self.settings = Qt.QSettings("gnuradio/flowgraphs", "PSK")
 
         try:
             geometry = self.settings.value("geometry")
@@ -463,8 +463,8 @@ class ook(gr.top_block, Qt.QWidget):
             self.Menu_grid_layout_3.setRowStretch(r, 1)
         for c in range(1, 2):
             self.Menu_grid_layout_3.setColumnStretch(c, 1)
-        self.interp_fir_filter_xxx_0 = filter.interp_fir_filter_fff(Sps, h)
-        self.interp_fir_filter_xxx_0.declare_sample_delay(0)
+        self.interp_fir_filter_xxx_0_0 = filter.interp_fir_filter_fff(Sps, h)
+        self.interp_fir_filter_xxx_0_0.declare_sample_delay(0)
         self._fd_range = qtgui.Range(0, samp_rate/8, samp_rate/1000, Rb, 200)
         self._fd_win = qtgui.RangeWidget(self._fd_range, self.set_fd, "Deviation Freq", "counter_slider", float, QtCore.Qt.Horizontal)
         self.top_grid_layout.addWidget(self._fd_win, 0, 1, 1, 1)
@@ -474,32 +474,34 @@ class ook(gr.top_block, Qt.QWidget):
             self.top_grid_layout.setColumnStretch(c, 1)
         self.epy_block_0_0 = epy_block_0_0.blk()
         self.epy_block_0 = epy_block_0.blk(fc=fc, samp_rate=samp_rate)
+        self.blocks_multiply_const_vxx_1 = blocks.multiply_const_ff(math.pi)
         self.blocks_char_to_float_0 = blocks.char_to_float(1, 1)
         self.analog_random_source_x_0 = blocks.vector_source_b(list(map(int, numpy.random.randint(0, 2, 1000000))), True)
-        self.analog_const_source_x_0 = analog.sig_source_f(0, analog.GR_CONST_WAVE, 0, 0, 0)
+        self.analog_const_source_x_0 = analog.sig_source_f(0, analog.GR_CONST_WAVE, 0, 0, 1)
 
 
         ##################################################
         # Connections
         ##################################################
-        self.connect((self.analog_const_source_x_0, 0), (self.epy_block_0, 1))
-        self.connect((self.analog_const_source_x_0, 0), (self.epy_block_0_0, 1))
+        self.connect((self.analog_const_source_x_0, 0), (self.epy_block_0, 0))
+        self.connect((self.analog_const_source_x_0, 0), (self.epy_block_0_0, 0))
         self.connect((self.analog_random_source_x_0, 0), (self.blocks_char_to_float_0, 0))
-        self.connect((self.blocks_char_to_float_0, 0), (self.interp_fir_filter_xxx_0, 0))
+        self.connect((self.blocks_char_to_float_0, 0), (self.blocks_multiply_const_vxx_1, 0))
         self.connect((self.blocks_char_to_float_0, 0), (self.qtgui_time_sink_x_0_0, 0))
+        self.connect((self.blocks_multiply_const_vxx_1, 0), (self.interp_fir_filter_xxx_0_0, 0))
         self.connect((self.epy_block_0, 0), (self.qtgui_freq_sink_x_0, 0))
         self.connect((self.epy_block_0, 0), (self.qtgui_time_sink_x_0_1_0, 1))
         self.connect((self.epy_block_0_0, 0), (self.qtgui_const_sink_x_0, 0))
         self.connect((self.epy_block_0_0, 0), (self.qtgui_freq_sink_x_0_0, 0))
         self.connect((self.epy_block_0_0, 0), (self.qtgui_time_sink_x_0_1_0_0, 0))
-        self.connect((self.interp_fir_filter_xxx_0, 0), (self.epy_block_0, 0))
-        self.connect((self.interp_fir_filter_xxx_0, 0), (self.epy_block_0_0, 0))
-        self.connect((self.interp_fir_filter_xxx_0, 0), (self.qtgui_time_sink_x_0_1, 0))
-        self.connect((self.interp_fir_filter_xxx_0, 0), (self.qtgui_time_sink_x_0_1_0, 0))
+        self.connect((self.interp_fir_filter_xxx_0_0, 0), (self.epy_block_0, 1))
+        self.connect((self.interp_fir_filter_xxx_0_0, 0), (self.epy_block_0_0, 1))
+        self.connect((self.interp_fir_filter_xxx_0_0, 0), (self.qtgui_time_sink_x_0_1, 0))
+        self.connect((self.interp_fir_filter_xxx_0_0, 0), (self.qtgui_time_sink_x_0_1_0, 0))
 
 
     def closeEvent(self, event):
-        self.settings = Qt.QSettings("gnuradio/flowgraphs", "ook")
+        self.settings = Qt.QSettings("gnuradio/flowgraphs", "PSK")
         self.settings.setValue("geometry", self.saveGeometry())
         self.stop()
         self.wait()
@@ -541,7 +543,7 @@ class ook(gr.top_block, Qt.QWidget):
 
     def set_h(self, h):
         self.h = h
-        self.interp_fir_filter_xxx_0.set_taps(self.h)
+        self.interp_fir_filter_xxx_0_0.set_taps(self.h)
 
     def get_fd(self):
         return self.fd
@@ -559,7 +561,7 @@ class ook(gr.top_block, Qt.QWidget):
 
 
 
-def main(top_block_cls=ook, options=None):
+def main(top_block_cls=PSK, options=None):
 
     qapp = Qt.QApplication(sys.argv)
 
